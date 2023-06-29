@@ -1,0 +1,117 @@
+Given the requirements, we will need to create the following files:
+
+1. `index.html`: This is the main HTML file that will contain the structure of the category tree and the checkboxes. It will also link to the CSS and JavaScript files.
+
+2. `styles.css`: This CSS file will contain the styles for the category tree and checkboxes.
+
+3. `script.js`: This JavaScript file will contain the logic for showing and hiding subcategories and for the "select/deselect all" button.
+
+Let's start with the `index.html` file:
+
+index.html
+```html
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Category Tree</title>
+    <link rel="stylesheet" type="text/css" href="styles.css">
+</head>
+<body>
+    <div id="tree">
+        <!-- The category tree will be dynamically generated here -->
+    </div>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="script.js"></script>
+</body>
+</html>
+```
+
+Next, we'll create the `styles.css` file:
+
+styles.css
+```css
+body {
+    font-family: Arial, sans-serif;
+}
+
+#tree {
+    margin: 20px;
+}
+
+.category {
+    margin-left: 20px;
+}
+
+.checkbox {
+    margin-right: 5px;
+}
+```
+
+Finally, we'll create the `script.js` file:
+
+script.js
+```javascript
+$(document).ready(function() {
+    // Define the category tree
+    var tree = [
+        {
+            name: 'Category 1',
+            subcategories: [
+                {
+                    name: 'Subcategory 1.1',
+                    subcategories: []
+                },
+                {
+                    name: 'Subcategory 1.2',
+                    subcategories: []
+                }
+            ]
+        },
+        {
+            name: 'Category 2',
+            subcategories: [
+                {
+                    name: 'Subcategory 2.1',
+                    subcategories: []
+                }
+            ]
+        }
+    ];
+
+    // Function to create a category
+    function createCategory(category) {
+        var $category = $('<div class="category"></div>');
+        var $checkbox = $('<input type="checkbox" class="checkbox">');
+        var $name = $('<span></span>').text(category.name);
+        var $button = $('<button class="toggle">+</button>');
+        $category.append($checkbox, $name, $button);
+
+        // Create subcategories
+        var $subcategories = $('<div class="subcategories"></div>').hide();
+        category.subcategories.forEach(function(subcategory) {
+            $subcategories.append(createCategory(subcategory));
+        });
+        $category.append($subcategories);
+
+        // Toggle subcategories
+        $button.click(function() {
+            $subcategories.toggle();
+            $button.text($subcategories.is(':visible') ? '-' : '+');
+        });
+
+        // Select/deselect all subcategories
+        $checkbox.change(function() {
+            $subcategories.find('.checkbox').prop('checked', $checkbox.is(':checked'));
+        });
+
+        return $category;
+    }
+
+    // Create the category tree
+    tree.forEach(function(category) {
+        $('#tree').append(createCategory(category));
+    });
+});
+```
+
+This code creates a simple category tree with checkboxes. The categories and subcategories are defined in the `tree` variable. The `createCategory` function creates a category with a checkbox, a name, a button to toggle the visibility of the subcategories, and the subcategories themselves. The "select/deselect all" functionality is implemented in the `change` event handler of the checkbox. The category tree is created by appending each category to the `#tree` element.

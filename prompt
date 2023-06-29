@@ -1,0 +1,8 @@
+Stórz mi kod html/jquery/css z drzewem kategorii z checkboxami. Drzewo może być wielopoziomowe. Ma być możliwość pokazywania i chowania podkategorii za pomocą przycisku "+". Nie ma limitów dla zagnieżdżeń podkategorii.
+Zaznaczenie rodzica nie powoduje zaznaczenia dzieci. Na początku każdej podgrupy ma znajdować się przycisk "zaznacz/odznacz wszystko", który zaznaczy checkboxy we wszystkich podkategoriach z danej kategorii.
+Layput html/css ma być prosty i elegancki.
+Jeżeli znasz to użyj jakieś biblioteki do tworzenia takich drzew.
+
+Przycisk zaznacz/odznacz wszystkie ma zaznaczać checkboxy we wszystkich podkategoriach i ich dzieciach.
+Nie ma określonego konkretnego layoutu HTML/CSS, projekt ma być prosty.
+Nie ma określonej biblioteki do tworzenia drzewa, możesz użyć dowolnej.

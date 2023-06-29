@@ -1,0 +1,28 @@
+body {
+    font-family: Arial, sans-serif;
+}
+
+#tree {
+    margin: 20px;
+}
+
+.category {
+    margin-left: 20px;
+}
+
+.checkbox {
+    margin-right: 5px;
+}
+
+.toggle {
+    display: inline-block;
+    width:20px;
+    height: 20px;
+    line-height: 10px;
+    text-align: center;
+    padding: 2px;
+    cursor: pointer;
+    color: #000;
+    border: none;
+    background: transparent
+}
